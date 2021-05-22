@@ -1,5 +1,7 @@
 // import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
+import Skeleton from '@/components/Skeleton';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { createClient } from 'contentful';
 import Image from 'next/image';
@@ -40,7 +42,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function RecipeDetails({ recipe }) {
-	if (!recipe) return <div>Loading...</div>;
+	if (!recipe) return <Skeleton />;
 	console.log(recipe);
 	const { title, cookingTime, ingredients, method, featuredImage } =
 		recipe.fields;
